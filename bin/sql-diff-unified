@@ -1,0 +1,16 @@
+#!/bin/sh
+
+sql1_src=$1
+sql2_src=$2
+
+jar=`dirname $0`/../sql-formatter/binary/sql-formatter-1.0.0-jar-with-dependencies.jar
+
+timestamp=`date "+%Y%m%d%H%M%S"`
+
+formatted_sql1=/tmp/sqldiffu-formatted_sql1.${timestamp}.sql
+formatted_sql2=/tmp/sqldiffu-formatted_sql2.${timestamp}.sql
+
+cat $sql1_src | java -jar $jar > $formatted_sql1
+cat $sql2_src | java -jar $jar > $formatted_sql2
+
+diff -u $formatted_sql1 $formatted_sql2

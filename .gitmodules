@@ -1,0 +1,3 @@
+[submodule "sql-formatter"]
+	path = sql-formatter
+	url = https://github.com/sambatriste/sql-formatter
